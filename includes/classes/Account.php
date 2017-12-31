@@ -37,19 +37,30 @@
 
     private function validateEmails($em, $em2) {
       if($em != $em2) {
-        array_push($this->errorArray, 'Your emails do not match')
+        array_push($this->errorArray, 'Your emails do not match');
         return;
       }
       // checking if email is in the proper format & valid
       if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-        array_push($this->errorArray, 'Email is invalid')
+        array_push($this->errorArray, 'Email is invalid');
         return;
       }
       // TODO: check that username has not been used
     }
 
     private function validatePasswords($pw, $pw2) {
-
+      if($pw != $pw2) {
+        array_push($this->errorArray, 'Your passwords do not match');
+        return;
+      }
+      if(preg_match('/[^A-Za-z0-9]/', $pw)) {
+        array_push($this->errorArray, 'Your password can only contain letters and numbers');
+        return;
+      }
+      if(strlen($pw) > 30 || strlen($pw) < 5) {
+        array_push($this->errorArray, 'Your password must be between 5 and 30 characters');
+        return;
+      }
     }
   }
 ?>
