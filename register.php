@@ -32,21 +32,26 @@
       <form id="registerForm" action="register.php" method="post">
         <h2>Create your free account</h2>
         <p>
+          <?php echo $account->getError('Your username must be between 5 and 25 characters'); ?>
           <label for="username">Username</label>
           <input id="username" type="text" name="username" placeholder="e.g. BobDoe" required>
         </p>
 
         <p>
+          <?php echo $account->getError('Your first name must be between 2 and 25 characters'); ?>
           <label for="firstName">First Name</label>
           <input id="firstName" type="text" name="firstName" placeholder="e.g. Bob" required>
         </p>
 
         <p>
+          <?php echo $account->getError('Your last name must be between 2 and 25 characters'); ?>
           <label for="lastName">Last Name</label>
           <input id="lastName" type="text" name="lastName" placeholder="e.g. Doe" required>
         </p>
 
         <p>
+          <?php echo $account->getError('Your emails do not match'); ?>
+          <?php echo $account->getError('Email is invalid'); ?>
           <label for="email">Email</label>
           <input id="email" type="email" name="email" placeholder="e.g. bdoe@email.com" required>
         </p>
@@ -57,6 +62,9 @@
         </p>
 
         <p>
+          <?php echo $account->getError('Your passwords do not match'); ?>
+          <?php echo $account->getError('Your password can only contain letters and numbers'); ?>
+          <?php echo $account->getError('Your password must be between 5 and 30 characters'); ?>
           <label for="password">Password</label>
           <input id="password" type="password" name="password" placeholder="Your password" required>
         </p>
