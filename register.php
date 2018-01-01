@@ -3,7 +3,7 @@
   include('includes/classes/Account.php');
   include('includes/classes/Constants.php');
   // creating new account & constants instance
-  $account = new Account();
+  $account = new Account($con);
   $contstants = new Constants();
 
   include('includes/handlers/register-handler.php');
