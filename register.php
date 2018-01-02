@@ -136,6 +136,17 @@
           </form>
 
         </div>
+
+        <div id="loginText">
+          <h1>Looking for music?</h1>
+          <h2>Starting listening now!</h2>
+          <ul>
+            <li>Discover music</li>
+            <li>Create playlists</li>
+            <li>Follow friends & artists</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </body>
