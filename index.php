@@ -29,6 +29,18 @@
             <span class="albumLink">
               <img src="https://pbs.twimg.com/profile_images/923950005928452096/iBu5RASh_400x400.jpg" class="albumArtwork" alt="Album Artwork">
             </span>
+
+            <div class="trackInfo">
+
+              <span class="trackName">
+                <span>Song Name</span>
+              </span>
+
+              <span class="artistName">
+                <span>Artist Name</span>
+              </span>
+
+            </div>
           </div>
 
         </div>
