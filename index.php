@@ -23,12 +23,18 @@
 
     <div id="nowPlayingBarContainer">
       <div id="nowPlayingBar">
+
         <div id="nowPlayingLeft">
+          <div class="content">
+            <span class="albumLink">
+              <img src="https://pbs.twimg.com/profile_images/923950005928452096/iBu5RASh_400x400.jpg" class="albumArtwork" alt="Album Artwork">
+            </span>
+          </div>
 
         </div>
+
         <div id="nowPlayingCenter">
           <div class="content playerControls">
-
             <div class="buttons">
               <button class="controlButton shuffle" title="Shuffle button" type="button" name="button">
                 <img src="assets/images/icons/shuffle.png" alt="Shuffle">
@@ -48,22 +54,18 @@
               <button class="controlButton repeat" title="Repeat button" type="button" name="button">
                 <img src="assets/images/icons/repeat.png" alt="Repeat">
               </button>
-
             </div>
 
             <div class="playbackBar">
               <span class="progressTime current">0.00</span>
-
               <div class="progressBar">
                   <div class="progressBarBg">
                     <div class="progress">
                     </div>
                   </div>
               </div>
-
               <span class="progressTime remaining">0.00</span>
             </div>
-
 
           </div>
         </div>
