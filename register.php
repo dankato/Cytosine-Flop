@@ -22,8 +22,38 @@
     <meta charset="utf-8">
     <title>Welcome to Cytosine Flop</title>
     <link rel="stylesheet" type="text/css" href="assets/css/register.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/js/register.js"></script>
   </head>
   <body>
+    <?php
+      if(isset($_POST['registerButton'])) {
+        echo '
+          <script>
+            $(document).ready(function() {
+
+              $("#loginForm").hide();
+              $("#registerForm").show();
+            });
+
+          </script>
+        ';
+      } else {
+        echo '
+          <script>
+              $(document).ready(function() {
+
+                $("#loginForm").show();
+                $("#registerForm").hide();
+              });
+
+            </script>
+        ';
+      }
+    ?>
+
+
     <div id="background">
 
       <div id="loginContainer">
@@ -42,6 +72,11 @@
               <input id="loginPassword" type="password" name="loginPassword" placeholder="Your password" required>
             </p>
             <button type="submit" name="loginButton">Login</button>
+
+            <div class="hasAccountText">
+              <span id="hideLogin">Don't have an account? Sign up here.</span>
+            </div>
+
           </form>
 
           <!-- REGISTER ACCOUNT -->
@@ -93,6 +128,11 @@
             </p>
 
             <button type="submit" name="registerButton">Sign Up</button>
+
+            <div class="hasAccountText">
+              <span id="hideRegister">Already have an account? Sign in here.</span>
+            </div>
+
           </form>
 
         </div>
