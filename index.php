@@ -1,40 +1,20 @@
-<!DOCTYPE html>
+<?php include('includes/header.php');?>
 
-<?php
-  include('includes/config.php');
+<h1 class="pageHeadingBig">You might also like</h1>
+<div class="gridViewContainer">
+  <?php
+    $albumQuery = mysqli_query($con, "SELECT * FROM albums ORDER BY RAND() LIMIT 10");
+    while($row = mysqli_fetch_array($albumQuery)) {
+      echo "<div class='gridViewItem'>
+        <a href='album.php?id=" . $row['id'] . "'>
+          <img src='" . $row['artworkPath'] . "'>
+          <div class='gridViewInfo'>"
+            . $row['title'] .
+          "</div>
+        </a>
+      </div>";
+    }
+  ?>
+</div>
 
-  // log out manual
-  // session_destroy();
-
-  if(isset($_SESSION['userLoggedIn'])) {
-    $userLoggedIn = $_SESSION['userLoggedIn'];
-  } else {
-    header('Location: register.php');
-  }
-?>
-
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Welcome to Cytosine Flow</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-
-  <div id="mainContainer">
-    <div id="topContainer">
-      <?php include("includes/navbarContainer.php"); ?>
-      <div id="mainViewContainer">
-        <div id="mainContent">
-          
-        </div>
-      </div>
-
-    </div>
-      <?php include("includes/nowPlayingBar.php"); ?>
-  </div>
-</body>
-
-</html>
+<?php include('includes/footer.php');?>
