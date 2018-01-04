@@ -1,19 +1,27 @@
-<?php  include("includes/header.php");
+<?php include("includes/header.php");
 
   if(isset($_GET['id'])) {
     $albumId = $_GET['id'];
   } else {
-    header('Location: index.php');
+    header("Location: index.php");
   }
 
-  $albumQuery = mysqli_query($con, "SELECT * FROM albums WHERE id='$albumId'");
-  $album = mysqli_fetch_array($albumQuery);
-  $artistId = $album['artist'];
-  $artistQuery =  mysqli_query($con, "SELECT * FROM artists WHERE id='$artistId'");
-  $artist = mysqli_fetch_array($artistQuery);
-  echo $album['title']."<br>";
-  echo $artist['name'];
+  $album = new Album($con, $albumId);
+  $artist = $album->getArtist();
+
+  // echo $album->getTitle()."<br>";
+  // echo $artist->getName();
 
 ?>
+
+<div class="entityInfo">
+  <div class="leftSection">
+    <img src="<?php echo $album->getArtworkPath(); ?>" alt="Album artwork">
+  </div>
+  <div class="rightSection">
+    <h2><?php echo $album->getTitle(); ?></h2>
+    <span>By <?php echo $artist->getName();?></span>
+  </div>
+</div>
 
 <?php  include("includes/footer.php"); ?>
