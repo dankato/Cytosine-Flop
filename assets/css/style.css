@@ -181,8 +181,8 @@ body {
 }
 
 .navBar .group {
-  border-top: 1px solid #a0a0a0;
-  padding: 10px 0;
+  border-top: 1px solid #474747;
+  padding: 6px 0;
 }
 
 .navItem {
@@ -208,6 +208,8 @@ body {
   right: 0;
   top: 7px;
   width: 20px;
+  /* mag glass icon */
+  display: none;
 }
 
 #mainViewContainer {
@@ -217,7 +219,7 @@ body {
 }
 
 #mainContent {
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .pageHeadingBig {
@@ -249,4 +251,38 @@ body {
 
 .gridViewItem a {
   text-decoration: none;
+}
+
+.entityInfo {
+  padding: 40px 0 10px 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.entityInfo .leftSection {
+  width: 30%;
+  float: left;
+  max-width: 250px;
+}
+
+.entityInfo .leftSection img {
+  width: 100%;
+}
+
+.entityInfo .rightSection {
+  width: 70%;
+  float: left;
+  padding: 30px 10px 5px 40px;
+  box-sizing: border-box;
+}
+
+.entityInfo .rightSection h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.entityInfo .rightSection span {
+  color: #939393;
+  font-weight: 200;
 }
