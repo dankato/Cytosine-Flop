@@ -37,6 +37,12 @@
         $(".artistName span").text(artist.name);
       });
 
+      $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) {
+        var album = JSON.parse(data);
+        // console.log(artist.name);
+        $(".albumLink img").attr("src", album.artworkPath);
+      });
+
       audioElement.setTrack(track.path);
       audioElement.play();
     })
@@ -66,7 +72,7 @@
     <div id="nowPlayingLeft">
       <div class="content">
         <span class="albumLink">
-            <img src="https://pbs.twimg.com/profile_images/923950005928452096/iBu5RASh_400x400.jpg" class="albumArtwork" alt="Album Artwork">
+            <img src="" class="albumArtwork" alt="Album Artwork">
           </span>
         <div class="trackInfo">
           <span class="trackName">
