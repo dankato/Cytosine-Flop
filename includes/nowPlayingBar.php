@@ -26,9 +26,17 @@
     // ajax call, a way of executing php, w/o reloading the page when accessing the db
     // retrieve song from table with id (url, data to send, do this with the result)
     $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
-
+      // parse the data, called it track
       var track = JSON.parse(data);
       // console.log(track);
+      $(".trackName span").text(track.title);
+
+      $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) {
+        var artist = JSON.parse(data);
+        // console.log(artist.name);
+        $(".artistName span").text(artist.name);
+      });
+
       audioElement.setTrack(track.path);
       audioElement.play();
     })
@@ -62,10 +70,10 @@
           </span>
         <div class="trackInfo">
           <span class="trackName">
-              <span>Song Name</span>
+              <span></span>
           </span>
           <span class="artistName">
-              <span>Artist Name</span>
+              <span></span>
           </span>
         </div>
       </div>
