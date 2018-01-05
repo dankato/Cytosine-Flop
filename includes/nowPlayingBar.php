@@ -76,12 +76,40 @@
   	audioElement.setTime(seconds);
   }
 
+  function nextSong() {
+    if(repeat == true) {
+      audioElement.setTime(0);
+      playSong();
+      return;
+    }
+
+    if(currentIndex == currentPlaylist.length - 1) {
+      currentIndex = 0;
+    } else {
+      currentIndex++;
+    }
+    var trackToPlay = currentPlaylist[currentIndex];
+    setTrack(trackToPlay, currentPlaylist, true);
+
+  }
+
+  function setRepeat() {
+    repeat = !repeat;
+    var imageName = repeat ? "repeat-active.png" : "repeat.png";
+    $(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
+  }
+
   function setTrack(trackId, newPlaylist, play) {
+
+    currentIndex = currentPlaylist.indexOf(trackId);
+    pauseSong();
+
     // audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
 
     // ajax call, a way of executing php, w/o reloading the page when accessing the db
     // retrieve song from table with id (url, data to send, do this with the result)
     $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+
       // parse the data, called it track
       var track = JSON.parse(data);
       // console.log(track);
@@ -166,10 +194,10 @@
           <button class="controlButton pause" title="Pause button" style="display: none;" type="button" onclick="pauseSong()">
               <img src="assets/images/icons/pause.png" alt="Pause">
             </button>
-          <button class="controlButton next" title="Next button" type="button" name="button">
+          <button class="controlButton next" title="Next button" type="button" onclick="nextSong()">
               <img src="assets/images/icons/next.png" alt="Next">
             </button>
-          <button class="controlButton repeat" title="Repeat button" type="button" name="button">
+          <button class="controlButton repeat" title="Repeat button" type="button" onclick="setRepeat()">
               <img src="assets/images/icons/repeat.png" alt="Repeat">
             </button>
         </div>

@@ -1,6 +1,8 @@
 var currentPlaylist = [];
 var audioElement;
 var mouseDown = false;
+var currentIndex = 0;
+var repeat = false;
 
 function Audio() {
   this.currentlyPlaying;
