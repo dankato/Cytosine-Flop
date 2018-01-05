@@ -23,11 +23,6 @@
 </head>
 
 <body>
-  <script>
-    var audioElement = new Audio();
-    audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
-    audioElement.audio.play();
-  </script>
 
   <div id="mainContainer">
     <div id="topContainer">

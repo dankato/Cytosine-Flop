@@ -1,3 +1,21 @@
+<?php
+  // retrieve playlist, 10 songs by random
+  $songQuery = mysqli_query($con, "SELECT id FROM Songs ORDER BY RAND() LIMIT 10");
+  // declaring an empty array
+  $resultArray = array();
+  // converting the result of the query above to the array,
+  while($row = mysqli_fetch_array($songQuery)) {
+    // push every item (song) into the array
+    array_push($resultArray, $row['id']);
+  }
+  // converting resultArray(php) into json, because when a page loads, the php runs first. json_encode is a built in funciton, pass in the php array.
+  $jsonArray = json_encode($resultArray)
+?>
+
+<script>
+  console.log(<?php echo $jsonArray; ?>)
+</script>
+
 <div id="nowPlayingBarContainer">
   <div id="nowPlayingBar">
 
