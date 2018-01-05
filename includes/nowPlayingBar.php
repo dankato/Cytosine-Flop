@@ -77,6 +77,7 @@
   }
 
   function nextSong() {
+    console.log('current index nextSong', currentIndex)
     if(repeat == true) {
       audioElement.setTime(0);
       playSong();
@@ -117,6 +118,9 @@
     shuffle = !shuffle;
     var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
     $(".controlButton.shuffle img").attr("src", "assets/images/icons/" + imageName);
+
+    console.log('current playlist: ', currentPlaylist);
+    console.log('shuffle playlist: ', shufflePlaylist);
 
     if(shuffle == true) {
       // randomize playlist

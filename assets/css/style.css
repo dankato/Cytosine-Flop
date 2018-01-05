@@ -306,7 +306,7 @@ body {
   background-color: pink;
 }
 
-.trackCount {
+.tracklistRow .trackCount {
   width: 8%;
   float: left;
 }
@@ -319,7 +319,7 @@ body {
 } */
 
 .tracklistRow .trackCount img {
-  tracklistrow: 20px;
+  width: 20px;
   visibility: hidden;
   position: absolute;
   cursor: pointer;
