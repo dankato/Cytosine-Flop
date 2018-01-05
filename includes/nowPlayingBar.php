@@ -26,7 +26,11 @@
     // ajax call, a way of executing php, w/o reloading the page when accessing the db
     // retrieve song from table with id (url, data to send, do this with the result)
     $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
-      console.log(data);
+
+      var track = JSON.parse(data);
+      // console.log(track);
+      audioElement.setTrack(track.path);
+      audioElement.play();
     })
 
     if(play == true) {
