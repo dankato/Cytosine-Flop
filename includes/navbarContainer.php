@@ -1,8 +1,8 @@
 <div id="navBarContainer">
   <nav class="navBar">
-    <a href="index.php" class="logo">
+    <span class="logo" onClick="openPage('index.php')">
       <img src="assets/images/icons/logo.png" alt="Logo">
-    </a>
+    </span>
 
     <div class="group">
       <div class="navItem">

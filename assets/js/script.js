@@ -6,6 +6,7 @@ var mouseDown = false;
 var currentIndex = 0;
 var repeat = false;
 var shuffle = false;
+var userLoggedIn;
 
 function Audio() {
   this.currentlyPlaying;
@@ -67,4 +68,13 @@ function updateTimeProgressBar(audio) {
 
   var progress = audio.currentTime / audio.duration * 100;
   $(".playbackBar .progress").css("width", progress + "%");
+}
+
+// converting unknown characters in url
+function openPage(url) {
+  if (url.indexOf("?") == -1) {
+    url = url + "?";
+  }
+  var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+  $("#mainContent").load(encodedUrl);
 }

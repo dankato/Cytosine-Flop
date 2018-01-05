@@ -181,7 +181,7 @@
 
       // console.log('track', track);
       audioElement.setTrack(track);
-      playSong();
+
     })
 
     if(play == true) {
