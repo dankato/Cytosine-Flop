@@ -1,9 +1,24 @@
 var currentPlaylist = [];
 var audioElement;
 
+function formatTime(seconds) {
+  var time = Math.round(seconds);
+  var minutes = Math.floor(time / 60);
+  var seconds = time - minutes * 60;
+  var extraZero = seconds < 10 ? "0" : "";
+
+  return minutes + ":" + extraZero + seconds;
+}
+
 function Audio() {
   this.currentlyPlaying;
   this.audio = document.createElement("audio");
+
+  this.audio.addEventListener("canplay", function() {
+    var duration = formatTime(this.duration);
+    // update time remaining, 'this' refers to the obj that the event was called on, the audio object
+    $(".progressTime.remaining").text(duration);
+  });
 
   this.setTrack = function(track) {
     this.currentlyPlaying = track;
