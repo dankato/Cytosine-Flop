@@ -93,6 +93,15 @@
 
   }
 
+  function previousSong() {
+    if(audioElement.audio.currentTime >= 3 || currentIndex == 0) {
+      audioElement.setTime(0);
+    } else {
+      currentIndex = currentIndex - 1;
+      setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
+    }
+  }
+
   function setRepeat() {
     repeat = !repeat;
     var imageName = repeat ? "repeat-active.png" : "repeat.png";
@@ -185,7 +194,7 @@
           <button class="controlButton shuffle" title="Shuffle button" type="button" name="button">
               <img src="assets/images/icons/shuffle.png" alt="Shuffle">
             </button>
-          <button class="controlButton previous" title="Previous button" type="button" name="button">
+          <button class="controlButton previous" title="Previous button" type="button" onClick="previousSong()">
               <img src="assets/images/icons/previous.png" alt="Previous">
             </button>
           <button class="controlButton play" title="Play button" type="button" onclick="playSong()">

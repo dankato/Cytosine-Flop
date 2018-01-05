@@ -24,6 +24,10 @@ function Audio() {
     updateVolumeProgressBar(this);
   });
 
+  this.audio.addEventListener("ended", function() {
+    nextSong();
+  });
+
   this.setTrack = function(track) {
     this.currentlyPlaying = track;
     this.audio.src = track.path;
