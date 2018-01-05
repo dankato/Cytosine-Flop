@@ -311,12 +311,12 @@ body {
   float: left;
 }
 
-.play {
+/* .play {
   width: 20px;
   visibility: hidden;
   position: absolute;
   cursor: pointer;
-}
+} */
 
 .tracklistRow .trackCount img {
   tracklistrow: 20px;
