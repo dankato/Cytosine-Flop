@@ -15,9 +15,9 @@
 <script>
 
   $(document).ready(function() {
-    currentPlaylist = <?php echo $jsonArray; ?>;
+    var newPlaylist = <?php echo $jsonArray; ?>;
     audioElement = new Audio();
-    setTrack(currentPlaylist[0], currentPlaylist, false);
+    setTrack(newPlaylist[0], newPlaylist, false);
     updateVolumeProgressBar(audioElement.audio);
 
     $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
@@ -88,9 +88,8 @@
     } else {
       currentIndex++;
     }
-    var trackToPlay = currentPlaylist[currentIndex];
+    var trackToPlay = shuffle ? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
     setTrack(trackToPlay, currentPlaylist, true);
-
   }
 
   function previousSong() {
@@ -114,9 +113,43 @@
     $(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
   }
 
-  function setTrack(trackId, newPlaylist, play) {
+  function setShuffle() {
+    shuffle = !shuffle;
+    var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
+    $(".controlButton.shuffle img").attr("src", "assets/images/icons/" + imageName);
 
-    currentIndex = currentPlaylist.indexOf(trackId);
+    if(shuffle == true) {
+      // randomize playlist
+      shuffleArray(shufflePlaylist);
+      currentIndex = shufflePlaylist.indexOf(audioElement.currentlyPlaying.id);
+    } else {
+      // shuffle deactived
+      // go back to original playlist
+      currentIndex = currentPlaylist.indexOf(audioElement.currentlyPlaying.id);
+    }
+  }
+
+  function shuffleArray(array) {
+      var j, x, i;
+      for (i = array.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = array[i];
+          array[i] = array[j];
+          array[j] = x;
+      }
+  }
+
+  function setTrack(trackId, newPlaylist, play) {
+    if(newPlaylist != currentPlaylist) {
+      currentPlaylist = newPlaylist;
+      shufflePlaylist = currentPlaylist.slice();
+      shuffleArray(shufflePlaylist);
+    }
+    if(shuffle == true) {
+      currentIndex = shufflePlaylist.indexOf(trackId);
+    } else {
+      currentIndex = currentPlaylist.indexOf(trackId);
+    }
     pauseSong();
 
     // audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
@@ -197,7 +230,7 @@
     <div id="nowPlayingCenter">
       <div class="content playerControls">
         <div class="buttons">
-          <button class="controlButton shuffle" title="Shuffle button" type="button" name="button">
+          <button class="controlButton shuffle" title="Shuffle button" type="button" onClick="setShuffle()">
               <img src="assets/images/icons/shuffle.png" alt="Shuffle">
             </button>
           <button class="controlButton previous" title="Previous button" type="button" onClick="previousSong()">
