@@ -20,6 +20,10 @@
     setTrack(currentPlaylist[0], currentPlaylist, false);
     updateVolumeProgressBar(audioElement.audio);
 
+    $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
+      e.preventDefault();
+    })
+
     // click drag
     $(".playbackBar .progressBar").mousedown(function() {
       console.log('mousedown')
