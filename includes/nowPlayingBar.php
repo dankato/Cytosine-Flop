@@ -8,7 +8,7 @@
     // push every item (song) into the array
     array_push($resultArray, $row['id']);
   }
-  // converting resultArray(php) into json, because when a page loads, the php runs first. json_encode is a built in funciton, pass in the php array.
+  // converting resultArray(php) into json, because when a page loads, the php runs first. json_encode is a built in function, pass in the php array.
   $jsonArray = json_encode($resultArray)
 ?>
 
@@ -18,7 +18,37 @@
     currentPlaylist = <?php echo $jsonArray; ?>;
     audioElement = new Audio();
     setTrack(currentPlaylist[0], currentPlaylist, false);
+
+    // click drag
+    $(".playbackBar .progressBar").mousedown(function() {
+      console.log('mousedown')
+    		mouseDown = true;
+    	});
+
+    $(".playbackBar .progressBar").mousemove(function(e) {
+    	if(mouseDown == true) {
+        console.log('mousemove')
+    		//Set time of song, depending on position of mouse
+    		timeFromOffset(e, this);
+    	}
+    });
+
+    $(".playbackBar .progressBar").mouseup(function(e) {
+    	timeFromOffset(e, this);
+      console.log('mouseup')
+    });
+
+    $(document).mouseup(function() {
+      mouseDown = false;
+    });
+
   });
+  // note: this referenced below is (".playbackBar .progressBar") from above
+  function timeFromOffset(mouse, progressBar) {
+  	var percentage = mouse.offsetX / $(progressBar).width() * 100;
+  	var seconds = audioElement.audio.duration * (percentage / 100);
+  	audioElement.setTime(seconds);
+  }
 
   function setTrack(trackId, newPlaylist, play) {
     // audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
