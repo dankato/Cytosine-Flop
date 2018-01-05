@@ -19,9 +19,15 @@
   <meta charset="utf-8">
   <title>Welcome to Cytosine Flow</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script type="text/javascript" src="assets/js/script.js"></script>
 </head>
 
 <body>
+  <script>
+    var audioElement = new Audio();
+    audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
+    audioElement.audio.play();
+  </script>
 
   <div id="mainContainer">
     <div id="topContainer">
