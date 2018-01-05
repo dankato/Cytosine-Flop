@@ -102,6 +102,12 @@
     }
   }
 
+  function setMute() {
+    audioElement.audio.muted = !audioElement.audio.muted;
+    var imageName = audioElement.audio.muted ? "volume-mute.png" : "volume.png";
+    $(".controlButton.volume img").attr("src", "assets/images/icons/" + imageName);
+  }
+
   function setRepeat() {
     repeat = !repeat;
     var imageName = repeat ? "repeat-active.png" : "repeat.png";
@@ -226,8 +232,8 @@
     </div>
     <div id="nowPlayingRight">
       <div class="volumeBar">
-        <button type="button" class="controlButton volumn" title="Volume button">
-            <img src="assets/images/icons/volume.png" alt="Volume">
+        <button type="button" class="controlButton volume" title="Volume button">
+            <img src="assets/images/icons/volume.png" alt="Volume" onClick="setMute()">
           </button>
         <div class="progressBar">
           <div class="progressBarBg">
