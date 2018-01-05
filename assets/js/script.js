@@ -18,6 +18,10 @@ function Audio() {
     }
   });
 
+  this.audio.addEventListener("volumechange", function(audio) {
+    updateVolumeProgressBar(this);
+  });
+
   this.setTrack = function(track) {
     this.currentlyPlaying = track;
     this.audio.src = track.path;
@@ -39,6 +43,11 @@ function formatTime(seconds) {
   var seconds = time - minutes * 60;
   var extraZero = seconds < 10 ? "0" : "";
   return minutes + ":" + extraZero + seconds;
+}
+
+function updateVolumeProgressBar(audio) {
+  var volume = audio.volume * 100;
+  $(".volumeBar .progress").css("width", volume + "%");
 }
 
 function updateTimeProgressBar(audio) {
