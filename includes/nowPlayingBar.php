@@ -21,20 +21,27 @@
   });
 
   function setTrack(trackId, newPlaylist, play) {
-    audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
+    // audioElement.setTrack('assets/music/bensound-anewbeginning.mp3');
+
+    // ajax call, a way of executing php, w/o reloading the page when accessing the db
+    // retrieve song from table with id (url, data to send, do this with the result)
+    $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+      console.log(data);
+    })
+
     if(play == true) {
       audioElement.play();
     }
   }
 
   function playSong() {
-  	$('.controlButton.play)'.hide();
+  	$('.controlButton.play').hide();
   	$('.controlButton.pause').show();
   	audioElement.play();
   }
 
   function pauseSong() {
-  	$('.controlButton.play)'.show();
+  	$('.controlButton.play').show();
   	$('.controlButton.pause').hide();
   	audioElement.pause();
   }
