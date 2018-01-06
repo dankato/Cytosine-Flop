@@ -23,6 +23,7 @@
 
 <!--  Song Section -->
 <div class="trackListContainer borderBottom">
+  <h3>Popular</h3>
   <ul class="trackList">
     <?php
       $songIdArray = $artist->getSongIds();
@@ -67,4 +68,23 @@
       // console.log(tempPlaylist);
     </script>
   </ul>
+</div>
+
+
+<!-- album section -->
+<div class="gridViewContainer">
+  <h3>Albums</h3>
+  <?php
+    $albumQuery = mysqli_query($con, "SELECT * FROM albums WHERE artist='$artistId'");
+    while($row = mysqli_fetch_array($albumQuery)) {
+      echo "<div class='gridViewItem'>
+        <span role='link' tabindex='0' onClick='openPage(\"album.php?id=" . $row['id'] . "\")'>
+          <img src='" . $row['artworkPath'] . "'>
+          <div class='gridViewInfo'>"
+            . $row['title'] .
+          "</div>
+        </span>
+      </div>";
+    }
+  ?>
 </div>

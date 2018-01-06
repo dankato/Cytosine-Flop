@@ -398,3 +398,8 @@ body {
   border-bottom: 1px solid #515151;
   margin-bottom: 10px;
 }
+
+.trackListContainer h3,
+.gridViewContainer h3 {
+  /* text-align: center; */
+}
