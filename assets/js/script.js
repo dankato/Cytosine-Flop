@@ -83,3 +83,7 @@ function openPage(url) {
   // update url when switching pages/views
   history.pushState(null, null, url);
 }
+
+function playFirstSong() {
+  setTrack(tempPlaylist[0], tempPlaylist, true);
+}

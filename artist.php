@@ -15,7 +15,7 @@
     <div class="artistInfo">
       <h1 class="artistName"><?php echo $artist->getName() ?></h1>
       <div class="headerButtons">
-        <button class="button green">Play</button>
+        <button class="button green" onClick="playFirstSong()">Play</button>
       </div>
     </div>
   </div>
