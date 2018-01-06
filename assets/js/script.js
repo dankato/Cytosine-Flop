@@ -77,4 +77,9 @@ function openPage(url) {
   }
   var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
   $("#mainContent").load(encodedUrl);
+
+  // going to new page, auto scroll to the top incase you are at the bottom
+  $("body").scrollTop(0);
+  // update url when switching pages/views
+  history.pushState(null, null, url);
 }
