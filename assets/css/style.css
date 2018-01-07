@@ -400,7 +400,8 @@ body {
 }
 
 .trackListContainer h3,
-.gridViewContainer h3 {
+.gridViewContainer h3,
+.artistsContainer h3 {
   /* text-align: center; */
 }
 
@@ -440,4 +441,13 @@ input:focus {
 
 .searchResultRow .artistName span {
   color: white;
+}
+
+.artistContainer h3 {
+  margin: auto;
+}
+
+.noResults {
+  margin: 15px;
+  display: block;
 }
