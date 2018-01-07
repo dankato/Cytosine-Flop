@@ -303,7 +303,7 @@ body {
 }
 
 .trackListRow:hover {
-  background-color: pink;
+  background-color: #282828;
 }
 
 .tracklistRow .trackCount {
@@ -428,4 +428,16 @@ body {
 }
 input:focus {
   outline: none;
+}
+
+.searchResultRow {
+  padding: 15px 10px;
+}
+
+.searchResultRow:hover {
+  background-color: #282828;
+}
+
+.searchResultRow .artistName span {
+  color: white;
 }
