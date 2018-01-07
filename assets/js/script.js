@@ -9,6 +9,17 @@ var shuffle = false;
 var userLoggedIn;
 var timer;
 
+$(document).click(function(click) {
+  var target = $(click.target);
+  if (!target.hasClass("item") && !target.hasClass("optionsButton")) {
+    hideOptionsMenu();
+  }
+});
+
+$(window).scroll(function() {
+  hideOptionsMenu();
+});
+
 function Audio() {
   this.currentlyPlaying;
   this.audio = document.createElement("audio");
@@ -141,4 +152,11 @@ function showOptionsMenu(button) {
     left: left - menuWidth + "px",
     display: "inline"
   });
+}
+
+function hideOptionsMenu() {
+  var menu = $(".optionsMenu");
+  if (menu.css("display") != "none") {
+    menu.css("display", "none");
+  }
 }
