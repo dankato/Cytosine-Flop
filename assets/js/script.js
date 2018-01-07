@@ -93,14 +93,19 @@ function playFirstSong() {
   setTrack(tempPlaylist[0], tempPlaylist, true);
 }
 
-function createPlaylist(username) {
-  var alert = prompt("Please enter the name of your playlist");
-  if (alert != null) {
+function createPlaylist() {
+  // console.log("user logged in: ", userLoggedIn);
+  var popup = prompt("Please enter the name of your playlist");
+  if (popup != null) {
     // console.log(alert);
     $.post("includes/handlers/ajax/createPlaylist.php", {
-      name: alert,
-      username: username
-    }).done(function() {
+      name: popup,
+      username: userLoggedIn
+    }).done(function(error) {
+      if (error != "") {
+        alert(error);
+        return;
+      }
       // when ajax returns
       openPage("yourMusic.php");
     });
