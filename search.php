@@ -17,7 +17,7 @@
 <script>
 
   $(function() {
-    var timer;
+
     $(".searchInput").keyup(function() {
       // while typing, cancel out existing timer
       clearTimeout(timer);
