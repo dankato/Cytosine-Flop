@@ -21,12 +21,22 @@ $(window).scroll(function() {
 });
 
 $(document).on("change", "select.playlist", function() {
-  var playlistId = $(this).val();
-  var songId = $(this)
-    .prev(".songId")
-    .val();
-  console.log("playlist id:", playlistId);
-  console.log("song id: ", songId);
+  var select = $(this);
+  var playlistId = select.val();
+  var songId = select.prev(".songId").val();
+  // console.log("playlist id:", playlistId);
+  // console.log("song id: ", songId);
+  $.post("includes/handlers/ajax/addToPlaylist.php", {
+    playlistId: playlistId,
+    songId: songId
+  }).done(function(error) {
+    if (error != "") {
+      alert(error);
+      return;
+    }
+    hideOptionsMenu();
+    select.val("");
+  });
 });
 
 function Audio() {
