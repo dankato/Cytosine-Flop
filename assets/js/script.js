@@ -20,6 +20,15 @@ $(window).scroll(function() {
   hideOptionsMenu();
 });
 
+$(document).on("change", "select.playlist", function() {
+  var playlistId = $(this).val();
+  var songId = $(this)
+    .prev(".songId")
+    .val();
+  console.log("playlist id:", playlistId);
+  console.log("song id: ", songId);
+});
+
 function Audio() {
   this.currentlyPlaying;
   this.audio = document.createElement("audio");
@@ -141,8 +150,13 @@ function deletePlaylist(playlistId) {
 }
 
 function showOptionsMenu(button) {
+  var songId = $(button)
+    .prevAll(".songId")
+    .val();
   var menu = $(".optionsMenu");
   var menuWidth = menu.width();
+  menu.find(".songId").val(songId);
+
   var scrollTop = $(window).scrollTop();
   var elementOffset = $(button).offset().top;
   var top = elementOffset - scrollTop;
