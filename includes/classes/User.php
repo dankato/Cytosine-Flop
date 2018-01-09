@@ -17,6 +17,11 @@
       $row = mysqli_fetch_array($query);
       return $row['name'];
     }
+    public function getEmail() {
+      $query = mysqli_query($this->con, "SELECT email FROM users WHERE username='$this->username'");
+      $row = mysqli_fetch_array($query);
+      return $row['email'];
+    }
   }
 
 ?>
