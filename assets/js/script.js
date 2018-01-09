@@ -202,3 +202,9 @@ function removeFromPlaylist(button, playlistId) {
     openPage("playlist.php?id=" + playlistId);
   });
 }
+
+function logout() {
+  $.post("includes/handlers/ajax/logout.php", function() {
+    location.reload();
+  });
+}
